@@ -28,7 +28,9 @@ class MovieGenerationService:
                 return await self.image.generate_poster(prompt)
             except ProviderError:
                 pass
-        return self.settings.fallback_poster_url
+        import urllib.parse
+        encoded_prompt = urllib.parse.quote(prompt)
+        return f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=720&height=1080&nologo=true"
 
     @staticmethod
     def _fallback_concept(request: MovieGenerationRequest) -> MovieConcept:

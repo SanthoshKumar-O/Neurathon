@@ -33,7 +33,7 @@ class Settings:
                 "FALLBACK_POSTER_URL",
                 "https://placehold.co/720x1080/111827/f9fafb?text=CineDream",
             ),
-            cors_origins=_origins(getenv("CORS_ORIGINS", "http://localhost:3000")),
+            cors_origins=_origins(getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173,*")),
         )
 
 

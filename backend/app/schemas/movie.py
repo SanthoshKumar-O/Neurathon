@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class Person(BaseModel):
@@ -74,4 +74,5 @@ class MovieConcept(BaseModel):
 
 
 class MovieGenerationResponse(MovieConcept):
-    poster_url: HttpUrl
+    model_config = ConfigDict(populate_by_name=True)
+    poster_url: str = Field(min_length=1, description="Absolute URL of the generated movie poster image")
